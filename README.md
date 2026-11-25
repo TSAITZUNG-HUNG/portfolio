@@ -12,6 +12,7 @@
 | [01 RTP／波動率配平（LP）](demos/01_rtp_volatility_balancing/) | 怎麼把 RTP 調到目標，又不去動公布的賠付表？ | RTP 105.5% → 96.000%，只動權重；距離自然分布僅 0.19%（TV）。但「最便宜的調法」會把大獎砍掉約 3/4，加一條限制式即可保住 70%，代價只多 0.009 個百分點。 |
 | [02 Monte Carlo 的統計紀律](demos/02_monte_carlo_discipline/) | 模擬出來的數字能信到什麼程度？ | 兩個 RTP 只差 0.58 個百分點，每邊模擬 10 萬次，**有 36% 的機率排反**；要 95% 排對每邊約需 200 萬次。 |
 | [03 自動化驗證](demos/03_automated_verification/) | 怎麼證明「配平算的」與「真正產出的」是同一件事？ | 兩趟逐位元比對＋5 項不變式；故意弄壞 5 種東西，**全部被擋下**。 |
+| [04 Jackpot 獎池設計](demos/04_jackpot_pool_design/) | 獎池怎麼設計？保底值不值得？玩家看得到獎池會不會被利用？ | 保底 10% 只讓大獎縮 0.5%；滾存 50% 讓獎金變異係數 1.00→0.58；**只在獎池高時才玩的玩家，整體 RTP 在獎池 ≥ 2 倍平均時就破 100%**。 |
 
 ## 共同的虛構遊戲
 
@@ -28,15 +29,16 @@ pip install -r requirements.txt
 python demos/01_rtp_volatility_balancing/run.py
 python demos/02_monte_carlo_discipline/run.py      # 約 1 分鐘
 python demos/03_automated_verification/run.py
-python -m pytest tests -q                          # 19 個測試
+python demos/04_jackpot_pool_design/run.py
+python -m pytest tests -q                          # 32 個測試
 ```
 
 ## 結構
 
 ```
-slotlab/        共用函式庫：toy_slot（遊戲與精確分布）、balance（LP）、mc（估計）、verify（驗證）
-demos/          三個示範（各有 README、run.py、results/）
-tests/          19 個測試（含突變測試）
+slotlab/        共用函式庫：toy_slot（遊戲與精確分布）、balance（LP）、mc（估計）、verify（驗證）、jackpot（獎池）
+demos/          四個示範（各有 README、run.py、results/）
+tests/          32 個測試（含突變測試與「精確加總」的獨立檢驗）
 ```
 
 ## 我的做法（原則）
@@ -52,3 +54,4 @@ tests/          19 個測試（含突變測試）
 - 示範用虛構的簡化遊戲；真實遊戲有免費遊戲、連消、特殊符號等機制，結果空間遠大於可枚舉範圍，需靠分層模擬取得原子與機率。
 - 示範一的 LP 目標是「離自然分布最近」，這是一種選擇，不是唯一正解（見該 README 的討論）。
 - 示範二的覆蓋率實驗只有 400 次重複，觀察值 94.0% 本身有約 ±1 個百分點的抽樣誤差。
+- 示範四的 Jackpot 是虛構的簡化模型（各注獨立、玩家同質），保底準備金只保證平均自給自足；細節見該 README 的限制。
