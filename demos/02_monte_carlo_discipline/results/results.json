@@ -1,0 +1,24 @@
+{
+  "exact_rtp": 1.055123935413588,
+  "sigma_per_spin": 3.4962816070920084,
+  "convergence_last": {
+    "n": 3981071,
+    "mean": 1.0543328792679159,
+    "se": 0.001757761389162453,
+    "abs_error": 0.0007910561456720977
+  },
+  "coverage": {
+    "reps": 400,
+    "n_per_rep": 20000,
+    "nominal": 0.95,
+    "observed": 0.94,
+    "mean_ci_width": 0.09630689874583861
+  },
+  "noise_trap": {
+    "delta_exact": 0.005761121965360605,
+    "n_per_game": 100000,
+    "reps": 300,
+    "share_ordered_wrong": 0.36,
+    "n_required_95pct": 1992890
+  }
+}

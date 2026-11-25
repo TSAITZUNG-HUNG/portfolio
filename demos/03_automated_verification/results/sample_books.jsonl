@@ -1,0 +1,3 @@
+{"id": 0, "payoutMultiplier": 125, "events": [{"type": "reveal", "grid": ["-", "A", "E", "-", "C", "A", "-", "-", "-", "B", "A", "-", "-", "A", "-"]}, {"type": "win", "amount": 125}, {"type": "finalWin", "amount": 125}]}
+{"id": 1, "payoutMultiplier": 125, "events": [{"type": "reveal", "grid": ["-", "-", "A", "-", "-", "A", "-", "-", "A", "-", "-", "E", "-", "A", "-"]}, {"type": "win", "amount": 125}, {"type": "finalWin", "amount": 125}]}
+{"id": 2, "payoutMultiplier": 0, "events": [{"type": "reveal", "grid": ["C", "-", "-", "-", "A", "D", "C", "-", "-", "A", "-", "-", "B", "-", "-"]}, {"type": "win", "amount": 0}, {"type": "finalWin", "amount": 0}]}
